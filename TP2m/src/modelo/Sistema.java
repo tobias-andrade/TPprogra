@@ -147,12 +147,11 @@ public class Sistema implements Serializable{
 	}
 
 	public synchronized void esperaParaComenzarVisitaAfip()
-	{
-		if (recursoCompartido)
-			JOptionPane.showMessageDialog(null,"AFIP hara su visita al terminar de ingresar abonado en curso");
+	{		
 		while (recursoCompartido)
 		{
 			try {
+				JOptionPane.showMessageDialog(null,"AFIP hara su visita al terminar de ingresar abonado en curso");
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
