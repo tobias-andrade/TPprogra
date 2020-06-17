@@ -25,7 +25,7 @@ public class Sistema implements Serializable{
 	private EPT ept= new EPT();
 	private ArrayList<IAbonado> abonados = new ArrayList<IAbonado>();
 	private boolean recursoCompartido=false;
-
+//holahola
 	private Sistema() {
 
 	}
