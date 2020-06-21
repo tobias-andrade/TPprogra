@@ -20,7 +20,7 @@ public class MorosoState extends State {
 
 	/**
 	 * Constructor de la clase MorosoState
-	 * @param abonado: representa el abonado al cual se le atribuye este estado
+	 * @param abonado : representa el abonado al cual se le atribuye este estado
 	 */
 	public MorosoState(IAbonado abonado) {
 		super(abonado);

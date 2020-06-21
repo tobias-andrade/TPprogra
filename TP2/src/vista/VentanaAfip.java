@@ -18,7 +18,7 @@ public class VentanaAfip extends JFrame {
 	
 	/**
 	 * Constructor de la clase
-	 * @param boton: se le pasa el boton incorporar para bloquearlo mientras esta ventata esta en curso
+	 * @param boton : se le pasa el boton incorporar para bloquearlo mientras esta ventata esta en curso
 	 */
 	public VentanaAfip(JButton boton)
     {

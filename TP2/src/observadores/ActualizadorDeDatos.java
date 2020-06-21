@@ -21,7 +21,7 @@ public class ActualizadorDeDatos implements Observer{
 
 	/**
 	 * Metodo para agregar observable y adems agregara a este un bservador que sera un objeto de este tipo<br>
-	 * @param ept: ept es el emulador del paso del tiempo que sera observado
+	 * @param ept : ept es el emulador del paso del tiempo que sera observado
 	 */
 	public void agregarObservable(EPT ept)
     {
@@ -31,7 +31,7 @@ public class ActualizadorDeDatos implements Observer{
 
     /**
      * Metodo para borrar observable<br>
-     * @param ept: observable que se borrara
+     * @param ept : observable que se borrara
      */
     public void borrarObservable(EPT ept)
     {

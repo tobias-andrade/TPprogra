@@ -19,7 +19,7 @@ public class GestorFacturacion implements Observer {
 
 	/**
 	 * Metodo que agrega observable, y a ese observable le agregara un observador que sera un objeto de esta clase precisamente<br>
-	 * @param ept: observable al que se le realizara esta accion
+	 * @param ept : observable al que se le realizara esta accion
 	 */
 	public void agregarObservable(EPT ept)
     {
@@ -29,7 +29,7 @@ public class GestorFacturacion implements Observer {
 
     /**
      * Metodo que elimina un observado de la lista de este observador<br>
-     * @param ept: observable que sera eliminado de la lista de observados
+     * @param ept : observable que sera eliminado de la lista de observados
      */
     public void borrarObservable(EPT ept)
     {

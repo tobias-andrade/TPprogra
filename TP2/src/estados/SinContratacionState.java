@@ -15,7 +15,7 @@ public class SinContratacionState extends State{
 
 	/**
 	 * Constructor de la clase
-	 * @param abonado: representa el abonado al cual se le atribuye este estado
+	 * @param abonado : representa el abonado al cual se le atribuye este estado
 	 */
 	public SinContratacionState(IAbonado abonado) {
 		super(abonado);

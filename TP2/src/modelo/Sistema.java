@@ -35,7 +35,7 @@ public class Sistema implements Serializable{
 	 * Constructor de la clase, se utiliza patron Singleton porque solo puede haber
 	 * una instancia del sistema
 	 * 
-	 * @return
+	 * @return la instancia del sistema
 	 */
 	public static Sistema getInstance() {
 		if (instance == null)
@@ -91,7 +91,7 @@ public class Sistema implements Serializable{
 	
 	/**
 	 * Metodo que le indica a un abonado que pague su factura<br>
-	 * @param abonado: abonado que realizara la tarea de pagar la factura
+	 * @param abonado : abonado que realizara la tarea de pagar la factura
 	 */
 	public void pagarFactura(IAbonado abonado)
 	{
@@ -108,7 +108,7 @@ public class Sistema implements Serializable{
 
 	/**
 	 * Metodo que settea true o false al recurso compartido, dependiendo si este esta en uso<br>
-	 * @param recursoCompartido: recurso de la zona critica que debe ser cuidado
+	 * @param recursoCompartido : recurso de la zona critica que debe ser cuidado
 	 */
 	public void setRecursoCompartido(boolean recursoCompartido) {
 		this.recursoCompartido = recursoCompartido;
@@ -125,8 +125,8 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que se encargara de agregar celulares a una contratacion
 	 * 
-	 * @param contratacion: contratacion a la cual se le agregara un servicio de celular<br>
-	 * @param cant      : cantidad de celulares a agregar <br>
+	 * @param contratacion : contratacion a la cual se le agregara un servicio de celular<br>
+	 * @param cantidad      : cantidad de celulares a agregar <br>
 	 *                  Este metodo en caso de producirse algun error capta las
 	 *                  excepciones y muestra el mensaje por pantalla
 	 */
@@ -147,12 +147,9 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que elimina una contratacion
 	 * 
-	 * @param nombre    : parametro de tipo String que representa el abonado al cual
-	 *                  se le desea eliminar una contratacion
-	 * @param direccion : parametro de tipo String que representa el domicilio del
-	 *                  abonado al cual se le desea desvincular la contratacion <br>
-	 *                  Si el nombre o el domicilio del abonado no es correcto se
-	 *                  notificara
+	 * @param abonado    : representa el abonado al cual
+	 *                  se le desea eliminar una contratacion<br>
+	 * @param contratacion : la contratacion que sera eliminada
 	 */
 	public void eliminarContratacion(IAbonado abonado, Contratacion contratacion) {
 			abonado.eliminarContratacion(contratacion);
@@ -241,8 +238,8 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que se encargara de agregar telefonos a una contratacion
 	 * 
-	 * @param contratacion: contratacion a la cual se le agregara un servicio de telefono<br>
-	 * @param cant      : cantidad de telefonos a agregar <br>
+	 * @param contratacion : contratacion a la cual se le agregara un servicio de telefono<br>
+	 * @param cantidad      : cantidad de telefonos a agregar <br>
 	 *                  Este metodo en caso de producirse algun error capta las
 	 *                  excepciones y muestra el mensaje por pantalla
 	 */
@@ -253,12 +250,12 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que se encargara de agregar TvCable a una contratacion
 	 * 
-	 * @param contratacion: contratacion a la cual se le agregara un servicio de TvCable<br>
-	 * @param cant      : cantidad de TvCable a agregar <br>
+	 * @param contratacion : contratacion a la cual se le agregara un servicio de TvCable<br>
+	 * @param cantidad      : cantidad de TvCable a agregar <br>
 	 *                  Este metodo en caso de producirse algun error capta las
 	 *                  excepciones y muestra el mensaje por pantalla
 	 */
-	public void agregaTvCable(Contratacion contratacion, int cantidad) { // DOCUMENTAR
+	public void agregaTvCable(Contratacion contratacion, int cantidad) {
 		contratacion.agregarTvCable(cantidad);
 	}
 

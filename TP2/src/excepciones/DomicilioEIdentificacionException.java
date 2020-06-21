@@ -13,7 +13,7 @@ public class DomicilioEIdentificacionException extends Exception {
 	private boolean elProblemaDomicilio;
 	/**
 	 * Contructor de la clase con parametro<br>
-	 * @param bool: si es verdadero: el problema es que ya existe un mismo domicilio con contratacion, si es falso: significa que ya hay una contratacion con el numero de identificacion ingresado
+	 * @param bool : si es verdadero: el problema es que ya existe un mismo domicilio con contratacion, si es falso: significa que ya hay una contratacion con el numero de identificacion ingresado
 	 */
 	public DomicilioEIdentificacionException(boolean bool) {
 		this.elProblemaDomicilio=bool;

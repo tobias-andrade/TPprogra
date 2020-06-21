@@ -27,7 +27,7 @@ public class PersonaFisica extends Abonado {
 
 	/**
 	 *Metodo que cambia el estado de la persona fisica, dependiendo el parametro que se le pase<br>
-	 *@param estado: es el neuvo estado al cual cambiara el abonado
+	 *@param estado : es el neuvo estado al cual cambiara el abonado
 	 */
 	public void cambiarEstado(String estado)
 	{

@@ -82,7 +82,7 @@ public class VentanaSistema extends JFrame implements MouseListener,IVista {
 
 	/**
 	 * Constructor de la ventana<br>
-	 * @param aclist: actionListener que en este caso es el controlador, para llevar a cabo todas las acciones al presionar los botones
+	 * @param aclist : actionListener que en este caso es el controlador, para llevar a cabo todas las acciones al presionar los botones
 	 */
 	public VentanaSistema(Controlador aclist) {
 		this.controlador=aclist;

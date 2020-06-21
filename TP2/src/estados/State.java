@@ -19,7 +19,7 @@ public abstract class State implements Cloneable,Serializable,IState{
 	
 	/**
 	 * Constructor de la clase State
-	 * @param abonado: representa el abonado al cual se lo cambiara de estado
+	 * @param abonado : representa el abonado al cual se lo cambiara de estado
 	 */
 	public State(IAbonado abonado)
 	{

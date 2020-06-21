@@ -8,7 +8,7 @@ public class DecoratorPagoTarjeta extends DecoratorPago{
 
 	/**
 	 * Constructor de la clase<br>
-	 * @param encapsulado: abonado que sera el tipo, PersonaFisica o PersonaJuridica
+	 * @param encapsulado : abonado que sera el tipo, PersonaFisica o PersonaJuridica
 	 */
 	public DecoratorPagoTarjeta(IAbonado encapsulado) {
 		super(encapsulado);

@@ -15,11 +15,13 @@ public class Factura implements Cloneable,Serializable,IFactura {
 	private double costo;
 	private double costoConModificacion;
 
+	
 	/**
-	 * Contructor de la clase con un parametro
-	 * 
-	 * @param abonado2 : parametro de tipo Abonado que representa el abonado al cual
-	 *                refiere la factura
+	 * Constructor de la clase<br>
+	 * @param abonado : abonado al cual pertenece la factura<br>
+	 * @param costo : costo inicial de la factura<br>
+	 * @param costoConModificacion : costo con descuento o inscremento de factura<br>
+	 * @param mes : mes de emicion de factura<br>
 	 */
 	public Factura(String abonado,double costo, double costoConModificacion,int mes) {
 		super();

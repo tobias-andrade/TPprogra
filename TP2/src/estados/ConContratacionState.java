@@ -17,7 +17,7 @@ public class ConContratacionState extends State {
 
 	/**
 	 * COnstructor de la clase
-	 * @param abonado: parametro que indica el abonado al cual se le asignara este estado
+	 * @param abonado : parametro que indica el abonado al cual se le asignara este estado
 	 */
 	public ConContratacionState(IAbonado abonado) {
 		super(abonado);

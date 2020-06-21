@@ -151,15 +151,14 @@ public abstract class Abonado implements IAbonado,IColeccionFacturas {
 	/**
 	 * Metodo que realiza una contratacion de un abonado para ser agregada al
 	 * sistema
-	 * 
-	 * @param domicilio      : parametro de tipo Domicilio al cual le pertenecera la
-	 *                       contratacion
-	 * @param nombre         : parametro de tipo String que representa el tipo de
-	 *                       contratacion que se llevara a cabo
-	 * @param identificacion : parametro de tipo entero que sera el numero de
-	 *                       identificacion de la futura contratacion
+	 * @param contratacion         : representa el tipo de
+	 *                       contratacion que se llevara a cabo<br>
+	 *@param domicilio      : parametro de tipo Domicilio al cual le pertenecera la
+	 *                       contratacion<br>
+	 * @param id : parametro de tipo entero que sera el numero de
+	 *                       identificacion de la futura contratacion<br>
 	 * @throws ServicioInexistenteException      : se lanza en caso de no existir el
-	 *                                           servicio requerido
+	 *                                           servicio requerido<br>
 	 * @throws DomicilioEIdentificacionException : se lanza si ya existe una
 	 *                                           contratacion con el domicilio o el
 	 *                                           numero de identificacion pasados
@@ -192,9 +191,7 @@ public abstract class Abonado implements IAbonado,IColeccionFacturas {
 	 * Metodo que elimina una contratacion especifica, dependiendo del domicilio al
 	 * que pertenece
 	 * 
-	 * @param domicilio : parametro de tipo Domicilio que representa el domicilio al
-	 *                  cual se le quiere eliminar la contratacion, en caso de tener
-	 *                  una
+	 * @param contratacion : representa la contratacion que se desea eliminar
 	 * @throws DomicilioEIdentificacionException : se lanza en caso de que el
 	 *                                           domicilio pasado por parametro no
 	 *                                           tengfa ninguna contratacion

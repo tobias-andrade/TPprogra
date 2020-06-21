@@ -20,7 +20,7 @@ public class AFIP extends Thread{
 	
 	/**
 	 * Constructor de la clase
-	 * @param ventana: se pasa la ventana del sistema para saber que se debe seguir enviando a AFIP mientras el sistema este en curso
+	 * @param ventana : se pasa la ventana del sistema para saber que se debe seguir enviando a AFIP mientras el sistema este en curso
 	 */
 	public AFIP(IVista ventana) {
 		this.sistema=Sistema.getInstance();

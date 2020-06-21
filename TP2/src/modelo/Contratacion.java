@@ -24,8 +24,8 @@ public abstract class Contratacion implements Cloneable,Serializable {
 	 * @param domicilio      : parametro de tipo Domicilio, sera el domicilio al
 	 *                       cual pertenezca la contratacion
 	 */
-	public Contratacion(int identidicacion, Domicilio domicilio) {
-		this.identificacion = identidicacion;
+	public Contratacion(int identificacion, Domicilio domicilio) {
+		this.identificacion = identificacion;
 		this.domicilio = domicilio;
 	}
 

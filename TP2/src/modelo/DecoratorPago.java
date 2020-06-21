@@ -144,7 +144,7 @@ public abstract class DecoratorPago implements IAbonado{
 	
 	/**
 	 *Este metodo cambia el estado del abonado
-	 *@param estado: el nuevo estado que se le atribuira al abonado
+	 *@param estado : el nuevo estado que se le atribuira al abonado
 	 */
 	public void cambiarEstado(String estado)
 	{
