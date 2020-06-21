@@ -1,6 +1,5 @@
 package observadores;
 
-import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
@@ -10,22 +9,37 @@ import modelo.Factura;
 import modelo.IAbonado;
 import modelo.Sistema;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ *Clase que agregara las facturas a los abonados del sistema
+ */
 public class GestorFacturacion implements Observer {
 	
 	protected EPT observado=null;
 
+	/**
+	 * Metodo que agrega observable, y a ese observable le agregara un observador que sera un objeto de esta clase precisamente<br>
+	 * @param ept: observable al que se le realizara esta accion
+	 */
 	public void agregarObservable(EPT ept)
     {
 		ept.addObserver(this);
 		this.observado=ept;;
     }
 
+    /**
+     * Metodo que elimina un observado de la lista de este observador<br>
+     * @param ept: observable que sera eliminado de la lista de observados
+     */
     public void borrarObservable(EPT ept)
     {
     	ept.deleteObserver(this);
     	this.observado=ept;
     }
 
+	/**
+	 *Metodo sobreescrito que agregara las facturas correspondientes a cada abonado al incrementar de mes
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1)
 	{	

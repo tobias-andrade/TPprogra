@@ -2,6 +2,10 @@ package util;
 
 import java.util.Random;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ *Clase que sirve para los tiempos de "espera" para distintos metodos
+ */
 public class Util
 {
 	private static Random r=new Random();

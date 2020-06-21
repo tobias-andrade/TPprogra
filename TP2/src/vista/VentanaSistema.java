@@ -32,6 +32,10 @@ import modelo.IAbonado;
 import persistencia.IPersistencia;
 import persistencia.PersistenciaBIN;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ * Ventana principal del sistema, en ella se realizara todo lo que se desee
+ */
 public class VentanaSistema extends JFrame implements MouseListener,IVista {
 
 	private JPanel contentPane;
@@ -76,6 +80,10 @@ public class VentanaSistema extends JFrame implements MouseListener,IVista {
 	
 	private Controlador controlador;
 
+	/**
+	 * Constructor de la ventana<br>
+	 * @param aclist: actionListener que en este caso es el controlador, para llevar a cabo todas las acciones al presionar los botones
+	 */
 	public VentanaSistema(Controlador aclist) {
 		this.controlador=aclist;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -423,6 +431,9 @@ public class VentanaSistema extends JFrame implements MouseListener,IVista {
 		
 	}
 
+	/**
+	 *Metodo sobreescrito que al presionar un abonado de la lista de abonados, refresca las demas listas para que contegan los datos de ese abonado seleccionado 
+	 */
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		this.abonado=listaAbonado.getSelectedValue();

@@ -19,6 +19,9 @@ public class PersonaJuridica extends Abonado {
 		this.estado=new ConContratacionState(this);
 	}
 
+	/**
+	 *Metodo que deberia cambiar de estado a un abonado tipo persona juridica, pero estos no cambian de estado, siempre permanecen en estado ConContratacion, es decir que pueden agregar y eliminar servicios siempre, y no pasan a estado moroso
+	 */
 	@Override
 	public void cambiarEstado(String estado) {
 		//PERSONA JURIDICA NUNCA CAMBIA DE ESTADO

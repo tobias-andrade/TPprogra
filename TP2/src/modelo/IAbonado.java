@@ -9,6 +9,10 @@ import excepciones.ContratacionException;
 import excepciones.DomicilioEIdentificacionException;
 import excepciones.ServicioInexistenteException;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ *Interface que implementaran los abonados, parte del patron decorator y se realiza el double dispatch para delegar acciones a encapsulados
+ */
 public interface IAbonado extends Cloneable,Serializable{
 
 	public String getNombre();

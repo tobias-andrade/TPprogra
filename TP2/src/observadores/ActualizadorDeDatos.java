@@ -11,22 +11,37 @@ import modelo.EPT;
 import modelo.IAbonado;
 import modelo.Sistema;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ *Clase que representa el actualizador de datos, este cambiara los estados de abonados
+ */
 public class ActualizadorDeDatos implements Observer{
 
 	protected EPT observado=null;
 
+	/**
+	 * Metodo para agregar observable y adems agregara a este un bservador que sera un objeto de este tipo<br>
+	 * @param ept: ept es el emulador del paso del tiempo que sera observado
+	 */
 	public void agregarObservable(EPT ept)
     {
 		ept.addObserver(this);
 		this.observado=ept;;
     }
 
+    /**
+     * Metodo para borrar observable<br>
+     * @param ept: observable que se borrara
+     */
     public void borrarObservable(EPT ept)
     {
     	ept.deleteObserver(this);
     	this.observado=ept;
     }
 	
+	/**
+	 *Metodo sobreescrito que realiza la accion de cambiar de estado a los abonados<br>
+	 */
 	@Override
 	public void update(Observable o, Object arg)
 	{

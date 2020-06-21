@@ -23,17 +23,25 @@ import persistencia.PersistenciaBIN;
 import vista.IVista;
 import vista.VentanaSistema;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ *Clase que representa al controlador, se encarga de independizar la vista del modelo
+ */
 public class Controlador implements ActionListener {
 
 	private IVista vista;
 	private IPersistencia<Serializable> persistencia=new PersistenciaBIN();
 	private Sistema sistema;
 	
+	/**
+	 * Constructor de la clase, no necesita parametros y se encarga de crear la ventana
+	 */
 	public Controlador()
 	{
 		GestorFacturacion gestor= new GestorFacturacion();
 		ActualizadorDeDatos actualizador= new ActualizadorDeDatos();
 		
+		//En caso de querer volver a empezar con un nuevo sistema descomentar este sector y comentar el try siguiente
 		/*sistema=Sistema.getInstance();
 		this.vista=new VentanaSistema(this);
 		refrescaListas();
@@ -58,6 +66,9 @@ public class Controlador implements ActionListener {
 		actualizador.agregarObservable(sistema.getEpt());
 	}
 	
+	/**
+	 * Metodo que refresca la lista de los abonados en la ventana
+	 */
 	public void refrescarListaAbonado()
 	{
 		vista.getListModelAbonado().clear();
@@ -68,6 +79,9 @@ public class Controlador implements ActionListener {
 		}
 	}
 
+	/**
+	 * Metodo que refresca la lista de los domicilios al cambiar de abonado seleccionado
+	 */
 	public void refrescarListaDomicilio()
 	{
 		vista.getListModelDomicilio().clear();
@@ -78,6 +92,9 @@ public class Controlador implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Metodo que refresca la lista de las contrataciones al seleccionar un abonado
+	 */
 	public void refrescarListaContratacion()
 	{
 		this.vista.getListModelContratacion().clear();
@@ -88,6 +105,9 @@ public class Controlador implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Metodo que refresca la lista de las facturas al seleccionar un nuevo abonado
+	 */
 	public void refrescarListaFactura()
 	{
 		vista.getListModelFactura().clear();
@@ -98,6 +118,9 @@ public class Controlador implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Metodo que refresca las listas de todos los abonados, domicilios, contrataciones y facturas luego de cada accion en la ventana
+	 */
 	public void refrescaListas() {
 		refrescarListaAbonado();
 		if (vista.getAbonado()!=null)
@@ -117,6 +140,9 @@ public class Controlador implements ActionListener {
 		}
 	}
 	
+	/**
+	 *Metodo actionPerformed que indica que accion se debe realizar por cada accion que ocurre en la ventana
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (vista.getAbonado()!=null && sistema.getAbonados()!=null)
 		{
@@ -152,6 +178,9 @@ public class Controlador implements ActionListener {
 		refrescaListas();
 	}
 	
+	/**
+	 * Metodo que agrega una contratacion a la lista de contrataciones de un abonado si se dan las condiciones
+	 */
 	public void realizarContratacion()
 	{
 		Domicilio domicilio=vista.getListaDomicilio().getSelectedValue();
@@ -170,6 +199,9 @@ public class Controlador implements ActionListener {
 			JOptionPane.showMessageDialog(null,"Debe seleccionar un domicilio para añadirle una contratacion");
 	}
 	
+	/**
+	 * Metodo que agrega un servicio a una contrataicon indicada en la ventana, en caso de no seleccionar ninguna contratacion se notifica por pantalla
+	 */
 	public void agregarServicioAContratacion()
 	{
 		Contratacion contratacion=vista.getListaContratacion().getSelectedValue();
@@ -203,6 +235,9 @@ public class Controlador implements ActionListener {
 			JOptionPane.showMessageDialog(null,"Debe seleccionar una contratacion para añadirle un servicio");
 	}
 	
+	/**
+	 * Metodo que incorpora un abonado al sistema si se completan todos los datos pedidos en la ventana
+	 */
 	public void incoorporarAbonado()
 	{
 		String nombre=vista.getTextFieldNombre().getText();

@@ -1,5 +1,9 @@
 package modelo;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ *Interface que implementaran las facturas
+ */
 public interface IFactura {
 
 	public String getAbonado();

@@ -25,9 +25,10 @@ public class Sistema implements Serializable{
 	private EPT ept= new EPT();
 	private ArrayList<IAbonado> abonados = new ArrayList<IAbonado>();
 	private boolean recursoCompartido=false;
-//holahola
-	private Sistema() {
-
+	
+	private Sistema()
+	{
+		
 	}
 
 	/**
@@ -45,11 +46,9 @@ public class Sistema implements Serializable{
 	}
 	
 	/**
-	 * Metodo que crea a un abonado, y luego directamente lo añade al sistema junto
-	 * a su factura que sera actualizada cada vez que el abonado realice un
-	 * movimiento
+	 * Metodo que crea a un abonado, y luego lo añade al sistema, este proceso puede tardar unos segundos por lo tanto se lo separa en partes para aprovechar concurrencia<br>
 	 * 
-	 * @param nombre : parametro de tipo String que sera l nombre del abonado
+	 * @param nombre : parametro de tipo String que sera el nombre del abonado
 	 * @param dni    : parametro de tipo String que sera el dni del abonado
 	 * @param tipo   : parametro de tipo String que sera el tipo de persona del
 	 *               abonado
@@ -57,7 +56,7 @@ public class Sistema implements Serializable{
 	 *               abonado<br>
 	 *               <b>Pre:</b>El tipo de persona debe ser o Fisica o Juridica
 	 *               unicamente. En cuanto al pago debe ser: Trajeta, Cheque o
-	 *               efectivo<br>
+	 *               efectivo. Y por ultimo el DNI debe ser un numero acorde a la documentacion actual<br>
 	 *               <b>Post:</b>El resultadp sera la insercion del abonado al
 	 *               sistema y la creacion de su factura
 	 */
@@ -71,6 +70,9 @@ public class Sistema implements Serializable{
 		terminaDeIngresarseAbonado();
 	}
 	
+	/**
+	 * Metodo sincronizado que comienza la tarea de agregar un abonado al sistema y toma el recurso compartido
+	 */
 	public synchronized void comenzarAAgregarAbonado()
 	{
 		JOptionPane.showMessageDialog(null,"Dando de alta abonado, agregando al sistema (esto puede tardar unos segundos)");
@@ -78,22 +80,36 @@ public class Sistema implements Serializable{
 		notifyAll();
 	}
 	
+	/**
+	 * Metodo sincronizado que concluye la entrada del abonado al sistema y libera el recurso compartido
+	 */
 	public synchronized void terminaDeIngresarseAbonado()
 	{
 		this.recursoCompartido=false;
 		notifyAll();
 	}
 	
+	/**
+	 * Metodo que le indica a un abonado que pague su factura<br>
+	 * @param abonado: abonado que realizara la tarea de pagar la factura
+	 */
 	public void pagarFactura(IAbonado abonado)
 	{
 		abonado.pagarFactura();
 	}
 	
+	/**
+	 * Metodo que incrementa mes, le delega la accion al EPT del sistema
+	 */
 	public void incrementarMes()
 	{
 		ept.incrementarMes();
 	}
 
+	/**
+	 * Metodo que settea true o false al recurso compartido, dependiendo si este esta en uso<br>
+	 * @param recursoCompartido: recurso de la zona critica que debe ser cuidado
+	 */
 	public void setRecursoCompartido(boolean recursoCompartido) {
 		this.recursoCompartido = recursoCompartido;
 	}
@@ -109,11 +125,7 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que se encargara de agregar celulares a una contratacion
 	 * 
-	 * @param nombre    : parametro de tipo String que representara el nombre del
-	 *                  abonado que desea añadir celulares
-	 * @param domicilio : parametro de tipo String que representara el domicilio al
-	 *                  cual esta ligada una contratacion y se le quiere agregar
-	 *                  celulares
+	 * @param contratacion: contratacion a la cual se le agregara un servicio de celular<br>
 	 * @param cant      : cantidad de celulares a agregar <br>
 	 *                  Este metodo en caso de producirse algun error capta las
 	 *                  excepciones y muestra el mensaje por pantalla
@@ -146,6 +158,9 @@ public class Sistema implements Serializable{
 			abonado.eliminarContratacion(contratacion);
 	}
 
+	/**
+	 * Metodo que comienza la visita de AFIP al sistema, si el recurso compartido esta en uso, se espera a que sea liberado
+	 */
 	public synchronized void esperaParaComenzarVisitaAfip()
 	{		
 		while (recursoCompartido)
@@ -160,6 +175,11 @@ public class Sistema implements Serializable{
 		notifyAll();
 	}
 	
+	/**
+	 * Metodo que realiza la visita de AFIP<br>
+	 * @param boton : boton incorporar que se pasa para que al abrirse la ventana de AFIP sea bloqueado, para no poder ingresar ningun abonado al sistema mientras AFIP esta de visita<br>
+	 * @return el retorno es la lista con todas las facturas del sistema clonadas
+	 */
 	public ArrayList<Factura> visitaAfip(JButton boton)
 	{
 		ArrayList<Factura> respuesta= new ArrayList<Factura>();
@@ -191,6 +211,9 @@ public class Sistema implements Serializable{
 		return respuesta;
 	}
 	
+	/**
+	 * Metodo que concluye con la visita de AFIP al sistema
+	 */
 	public synchronized void terminaVisitaAfip()
 	{
 		recursoCompartido=false;
@@ -218,11 +241,7 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que se encargara de agregar telefonos a una contratacion
 	 * 
-	 * @param nombre    : parametro de tipo String que representara el nombre del
-	 *                  abonado que desea añadir telefonos
-	 * @param domicilio : parametro de tipo String que representara el domicilio al
-	 *                  cual esta ligada una contratacion y se le quiere agregar
-	 *                  telefonos
+	 * @param contratacion: contratacion a la cual se le agregara un servicio de telefono<br>
 	 * @param cant      : cantidad de telefonos a agregar <br>
 	 *                  Este metodo en caso de producirse algun error capta las
 	 *                  excepciones y muestra el mensaje por pantalla
@@ -234,11 +253,7 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que se encargara de agregar TvCable a una contratacion
 	 * 
-	 * @param nombre    : parametro de tipo String que representara el nombre del
-	 *                  abonado que desea añadir TvCable
-	 * @param domicilio : parametro de tipo String que representara el domicilio al
-	 *                  cual esta ligada una contratacion y se le quiere agregar
-	 *                  TvCable
+	 * @param contratacion: contratacion a la cual se le agregara un servicio de TvCable<br>
 	 * @param cant      : cantidad de TvCable a agregar <br>
 	 *                  Este metodo en caso de producirse algun error capta las
 	 *                  excepciones y muestra el mensaje por pantalla
@@ -262,8 +277,8 @@ public class Sistema implements Serializable{
 	/**
 	 * Metodo que agrega un domicilio a un abonado
 	 * 
-	 * @param nombre    : parametro de tipo String que representa el nombre del
-	 *                  abonado
+	 * @param abonado    : parametro de tipo IAboando que representa el
+	 *                  abonado al cual se le agregara un domicilio<br>
 	 * @param direccion : parametro de tipo String que representa la direccion del
 	 *                  domicilio a crear <br>
 	 *                  Si no se encuentra un abonado en el sistema con el nombre
@@ -275,18 +290,11 @@ public class Sistema implements Serializable{
 	}
 
 	/**
-	 * Metodo que se encarga de realizar la contratacion de abonado
-	 * 
-	 * @param nombre         : parametro de tipo String que representa el nombre del
-	 *                       abonado
-	 * @param direccion      : parametro de tipo String que representa el domicilio
-	 *                       al cual pertenecera la contratacion
-	 * @param tipo           : parametro de tipo String que representara el tipo de
-	 *                       contratacion a realizar por el abonado
-	 * @param identificacion : parametro de tipo entero que representara el numero
-	 *                       de identificaion de la contratacion a realizar <br>
-	 *                       Si se produce algun error en el proceso el metodo
-	 *                       atrapara las exepciones y notificara el error
+	 * Metodo que realiza la contratacion y la añade a la lista de contrataciones de un abonado<br>
+	 * @param abonado : abonado al cual se le añadira una contratacion<br>
+	 * @param domicilio : domicilio al cual se le querra añadir la contratacion<br>
+	 * @param id : numero de identificaion de la nueva contratacion<br>
+	 * @param contratacion : contratacion a añadir en la lista del abonado
 	 */
 	public void realizarContratacion(IAbonado abonado,Domicilio domicilio, int id, Contratacion contratacion) {
 		try {
@@ -321,6 +329,10 @@ public class Sistema implements Serializable{
 		return clonada;
 	}
 
+	/**
+	 * Metodo que settea la instancia del sistema, sirve unicamente para la apertura del sistema<br>
+	 * @param instance : sistema el cual implementa Patron Singleton
+	 */
 	public void setInstance(Sistema instance)
 	{
 		this.instance=instance;

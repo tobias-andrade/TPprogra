@@ -13,6 +13,10 @@ import modelo.Factura;
 import modelo.IAbonado;
 import modelo.Sistema;
 
+/**
+ * @author Federico,Gaston,Tobias <br>
+ *Interface que implementara la ventana principal del sistema para que el controlador le solicite los datos correspondientes para poder realizar las acciones correspondientes
+ */
 public interface IVista {
 
 	public void repaint();

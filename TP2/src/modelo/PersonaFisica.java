@@ -25,6 +25,10 @@ public class PersonaFisica extends Abonado {
 		estado= new SinContratacionState(this);
 	}
 
+	/**
+	 *Metodo que cambia el estado de la persona fisica, dependiendo el parametro que se le pase<br>
+	 *@param estado: es el neuvo estado al cual cambiara el abonado
+	 */
 	public void cambiarEstado(String estado)
 	{
 		if (estado.equals("Moroso"))

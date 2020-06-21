@@ -12,7 +12,7 @@ import excepciones.ServicioInexistenteException;
 
 /**
  * @author Federico,Gaston,Tobias <br>
- *         Clase abstracta que representa un abonado del sistema
+ *         Clase abstracta que representa un abonado del sistema, es parte del decorator, implementa la interfaz IAboando
  */
 public abstract class Abonado implements IAbonado,IColeccionFacturas {
 
