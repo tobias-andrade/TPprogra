@@ -2,17 +2,14 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import estados.State;
-import excepciones.ContratacionException;
 import excepciones.DomicilioEIdentificacionException;
 
 /**
  * @author Federico,Gaston,Tobias <br>
  *Interface que implementaran los abonados, parte del patron decorator y se realiza el double dispatch para delegar acciones a encapsulados
  */
-public interface IAbonado extends Cloneable,Serializable{
+public interface IAbonado extends Cloneable,Serializable,IColeccionFacturas{
 
 	public String getNombre();
 	
@@ -41,10 +38,6 @@ public interface IAbonado extends Cloneable,Serializable{
 	public String toString();
 	
 	public Object clone() throws CloneNotSupportedException;
-	
-	public ArrayList<Factura> getFacturas();
-
-	public void agregarFactura(Factura factura);
 	
 	public void pagarFactura();
 	
