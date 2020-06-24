@@ -4,9 +4,6 @@ import java.awt.Toolkit;
 
 import javax.swing.JOptionPane;
 
-import excepciones.ContratacionException;
-import excepciones.DomicilioEIdentificacionException;
-import excepciones.ServicioInexistenteException;
 import modelo.Contratacion;
 import modelo.Domicilio;
 import modelo.IAbonado;

@@ -42,6 +42,7 @@ public class Controlador implements ActionListener {
 		ActualizadorDeDatos actualizador= new ActualizadorDeDatos();
 		
 		//En caso de querer volver a empezar con un nuevo sistema descomentar este sector y comentar el try-catch siguiente
+		
 		/*sistema=Sistema.getInstance();
 		this.vista=new VentanaSistema(this);
 		refrescaListas();

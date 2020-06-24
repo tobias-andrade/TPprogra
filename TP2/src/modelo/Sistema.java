@@ -7,7 +7,6 @@ import java.util.Iterator;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import excepciones.AbonadoException;
 import excepciones.DomicilioEIdentificacionException;
 import util.Util;
 import vista.VentanaAfip;
@@ -216,24 +215,6 @@ public class Sistema implements Serializable{
 		recursoCompartido=false;
 		notifyAll();
 	}
-	
-	/**
-	 * Metodo que muestra la factura de un abonado especifico
-	 * 
-	 * @param nombre : parametro de tipo String que sera el nombre del abonado del
-	 *               cual se desea mostrar su factura <br>
-	 *               Si el nombre del abonado no esta en el sistema se mostrara el
-	 *               error
-	 */
-	public void mostrarFacturaDe(String nombre) {
-		IAbonado factura;
-		try {
-			factura = this.buscaAbonado(nombre);
-			System.out.println(factura);
-		} catch (AbonadoException e) {
-			System.out.println(e.getMessage() + ", no se puede mostrar una factura inexistente");
-		}
-	}
 
 	/**
 	 * Metodo que se encargara de agregar telefonos a una contratacion
@@ -305,55 +286,12 @@ public class Sistema implements Serializable{
 	}
 
 	/**
-	 * Metodo que clonara a una factura especifica
-	 * 
-	 * @param nombre : parametro de tipo String que representa el nombre del abonado
-	 *               al cual se le desea duplicar su factura
-	 * @return el resultado sera una duplicacion de la factura del abonado que se
-	 *         desee <br>
-	 *         En caso de no poder ser clonada, se notificara por pantalla
-	 */
-	public IAbonado clonarFactura(String nombre) {
-		IAbonado clonada = null, aux = null;
-		try {
-			aux = buscaAbonado(nombre);
-			clonada = (IAbonado) aux.clone();
-		} catch (AbonadoException e) {
-			System.out.println(e.getMessage() + " para clonar su factura");
-		} catch (CloneNotSupportedException e) {
-			System.out.println("La factura de " + nombre + " no puede ser clonada\n");
-		}
-		return clonada;
-	}
-
-	/**
 	 * Metodo que settea la instancia del sistema, sirve unicamente para la apertura del sistema<br>
 	 * @param instance : sistema el cual implementa Patron Singleton
 	 */
 	public void setInstance(Sistema instance)
 	{
 		this.instance=instance;
-	}
-
-	/**
-	 * Metodo que busca a un abonado en el sistema por su nombre
-	 * 
-	 * @param nombre : parametro de tipo String que representa el nombre del abonado
-	 *               a buscar
-	 * @return el retorno es el abonado con dicho nombre
-	 * @throws AbonadoException : se lanza en el caso de que el sistema no tenga un
-	 *                          abonado con el nombre pasado por parametro
-	 */
-	private IAbonado buscaAbonado(String nombre) throws AbonadoException {
-		IAbonado aux = null;
-		int i = 0;
-		while ((i < abonados.size()) && !(nombre.equals(abonados.get(i).getNombre())))
-			i++;
-		if ((i < abonados.size()) && (nombre.equals(abonados.get(i).getNombre())))
-			aux = abonados.get(i);
-		else
-			throw new AbonadoException();
-		return aux;
 	}
 
 }
